@@ -27,7 +27,7 @@ function Interview({params}) {
         setInterviewData(result[0]);
     }
   return (
-    <div className='my-10 '>
+    <div className='my-10 text-white'>
         <h2 className='font-bold text-2xl'>Let's Get Started</h2>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-10'>
        
@@ -62,7 +62,7 @@ function Interview({params}) {
 
             
         </div>
-        <div className='flex justify-end items-end'>
+        <div className='flex justify-end items-end text-black bg-black'>
             <Link href={'/dashboard/interview/'+params.interviewId+'/start'}>
             <Button >Start Interview</Button>
             </Link>
