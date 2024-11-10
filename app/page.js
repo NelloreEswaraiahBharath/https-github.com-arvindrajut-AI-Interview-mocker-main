@@ -16,7 +16,7 @@ export default function Home() {
               WELCOME TO PrepAI
             </h1>
             <p className="mb-8 text-lg font-normal text-gray-200 opacity-60 lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400">
-              Your personal interview coach
+              Your personal AI interview coach
             </p>
             <div className="flex flex-col lg:mb-16 space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
               <a

@@ -13,23 +13,44 @@ const ZoomCamera = ({ onZoomComplete }) => {
   const { camera } = useThree();
   const [hasZoomed, setHasZoomed] = useState(false);
 
-  // Initial animation to zoom in from far away
+  // Initial animation to zoom in from very far away, with light speed effect
   useEffect(() => {
     const isSmallScreen = typeof window !== 'undefined' && window.innerWidth < 768;
-    camera.position.set(0, 0, isSmallScreen ? 100 : 150); // Set a very far initial position to create the deep space effect
+    camera.position.set(0, 0, isSmallScreen ? 5000 : 10000); // Set an even farther initial position to create the deep space effect
 
     // Start the page scrolled to the bottom to ensure the first view is the deep space
     if (typeof window !== 'undefined') {
       window.scrollTo(0, document.body.scrollHeight);
     }
 
+    // Light speed zoom-in effect, with stars becoming lines
     gsap.to(camera.position, {
-      z: isSmallScreen ? 3 : 5, // Move the camera closer over time, different distance for smaller screens
-      duration: 6,
-      ease: "power4.out",
+      z: isSmallScreen ? 20 : 30, // Move the camera very fast initially
+      duration: 5, // Make the light speed animation longer for viewers' pleasure
+      ease: "power4.in",
+      onUpdate: () => {
+        // Make stars look like lines during fast zoom
+        const stars = document.querySelector("canvas");
+        if (stars) {
+          stars.style.filter = "blur(4px) brightness(2)";
+        }
+      },
       onComplete: () => {
-        setHasZoomed(true);
-        onZoomComplete();
+        // Reset star effect
+        const stars = document.querySelector("canvas");
+        if (stars) {
+          stars.style.filter = "none";
+        }
+        // Slow down to approach the final position
+        gsap.to(camera.position, {
+          z: isSmallScreen ? 3 : 5,
+          duration: 6,
+          ease: "power4.out",
+          onComplete: () => {
+            setHasZoomed(true);
+            onZoomComplete();
+          },
+        });
       },
     });
   }, [camera, onZoomComplete]);
@@ -110,9 +131,9 @@ const AnimatedSpheres = () => {
 const FeatureText = () => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const texts = [
-    "Feature 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    "Feature 2: Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
-    "Feature 3: Sed nisi. Nulla quis sem at nibh elementum imperdiet.",
+    "FROM SPACEMAN PRODUCTIONS",
+    "JK",
+    "I AM UNEMPLOYED. PLEASE HIRE",
   ];
 
   useEffect(() => {
@@ -151,7 +172,7 @@ const ThreeCanvas = () => {
             factor={10} 
             saturation={0} 
             fade 
-            speed={1} 
+            speed={3} // Increase speed to give stars a warp effect
           />
         )}
 
