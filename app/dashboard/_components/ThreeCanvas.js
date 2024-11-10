@@ -18,6 +18,11 @@ const ZoomCamera = ({ onZoomComplete }) => {
     const isSmallScreen = typeof window !== 'undefined' && window.innerWidth < 768;
     camera.position.set(0, 0, isSmallScreen ? 100 : 150); // Set a very far initial position to create the deep space effect
 
+    // Start the page scrolled to the bottom to ensure the first view is the deep space
+    if (typeof window !== 'undefined') {
+      window.scrollTo(0, document.body.scrollHeight);
+    }
+
     gsap.to(camera.position, {
       z: isSmallScreen ? 3 : 5, // Move the camera closer over time, different distance for smaller screens
       duration: 6,
@@ -105,9 +110,9 @@ const AnimatedSpheres = () => {
 const FeatureText = () => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const texts = [
-    "SPACEMAN PRODUCTION PRESENTS",
-    "AN ARVIND RAJU TADI FILM",
-    "CURRENTLY UNEMPLOYED PLEASE HIRE!",
+    "Feature 1: Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "Feature 2: Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.",
+    "Feature 3: Sed nisi. Nulla quis sem at nibh elementum imperdiet.",
   ];
 
   useEffect(() => {
