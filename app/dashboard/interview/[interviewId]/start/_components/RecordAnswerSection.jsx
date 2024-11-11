@@ -116,7 +116,7 @@ function RecordAnswerSection({mockInterviewQuestion,activeQuestionIndex,intervie
             </h2>
             :
             
-            <h2 className='text-primary flex gap-2 items-center'>
+            <h2 className='text-black flex gap-2 items-center hover:text-red-600'>
               <Mic/>  Record Answer</h2> }</Button>
       
      

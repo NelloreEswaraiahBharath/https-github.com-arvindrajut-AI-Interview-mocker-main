@@ -16,7 +16,9 @@ function Dashboard() {
 
       {/* Previous Interview List  */}
       <InterviewList/>
+      <div className="text-gray-400 absolute bottom-2 left-3 border-purple-500 border-2 ">Need a refresher? SMART DOCS COMING SOON...</div>
     </div>
+  
   )
 }
 
