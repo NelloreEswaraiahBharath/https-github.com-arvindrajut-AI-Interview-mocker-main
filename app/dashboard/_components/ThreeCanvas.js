@@ -131,9 +131,9 @@ const AnimatedSpheres = () => {
 const FeatureText = () => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
   const texts = [
-    "FROM SPACEMAN PRODUCTIONS",
-    "JK",
-    "I AM UNEMPLOYED. PLEASE HIRE",
+    "GIVE INSTANT INTERVIEW",
+    "RECEIVE INSTANT FEEDBACK",
+    "BOOTSTRAP YOUR INTERVIEW PREP!",
   ];
 
   useEffect(() => {
