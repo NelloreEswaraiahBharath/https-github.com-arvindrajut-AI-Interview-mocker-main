@@ -68,7 +68,7 @@ function AddNewInterview() {
     }
   return (
     <div>
-        <div className='p-10 border rounded-lg bg-secondary
+        <div className='p-10 text-black border rounded-lg bg-secondary
         hover:scale-105 hover:shadow-md cursor-pointer
          transition-all border-dashed'
          onClick={()=>setOpenDailog(true)}
@@ -107,12 +107,12 @@ function AddNewInterview() {
                     </div>
                 </div>
                 <div className='flex gap-5 justify-end'>
-                    <Button type="button" variant="ghost" onClick={()=>setOpenDailog(false)}>Cancel</Button>
-                    <Button type="submit" disabled={loading} >
+                    <Button  type="button" className="border-2 border-red-500 hover:bg-red-500 hover:text-white" variant="ghost" onClick={()=>setOpenDailog(false)}>Cancel</Button>
+                    <Button type="submit" className="border-2 border-green-400 text-black hover:text-white hover:shadow-white hover:bg-green-500" disabled={loading} >
                         {loading? 
                         <>
                         <LoaderCircle className='animate-spin' /> Generating from AI
-                        </>:'Start Interview'    
+                        </>:'Start Interview'  
                     }
                         </Button>
                 </div>
